@@ -83,7 +83,7 @@ extension UIColor {
         
         var hexIntValue : UInt32 = 0x000000
         
-        let stringSize = countElements( hexString )
+        let stringSize = count( hexString )
         
         
         if ( ( stringSize == 6 ) || ( stringSize == 7 ) ) {
@@ -110,3 +110,4 @@ extension UIColor {
         self.init ( hex: Int( hexIntValue ), alpha: alpha )
     }
 }
+
