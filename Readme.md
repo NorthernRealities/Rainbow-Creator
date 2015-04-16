@@ -15,7 +15,7 @@ to the following
 
 	let backgroundColour = UIColor  ( redValue: 94, greenValue: 7, blueValue: 95, alphaValue: 1.0 )
 
-Note that because the alpha value in this case was 1.0 it could have been left off because the function has it set to that value by default.  There has been a change from the initial release of the library.  This function used to be called createColorWith but is now a convenience initializer.  I hope that this change doesn't cause you too much trouble.
+Note that because the alpha value in this case was 1.0 it could have been left off because the function has it set to that value by default.  There has been a change from the initial release of the library.
 
 There are also functions that allow you to create UIColor objects using a hexidecimal integer or string.
 
