@@ -22,7 +22,7 @@ There are also functions that allow you to create UIColor objects using a hexide
 	let backgroundColour = UIColor ( hex: 0x42ac58, alpha: 0.75 )
 	let foregroundColour = UIColor ( hexString: "#0f23ec" )
 	
-The setting of the alpha is available in both but if you leave it out then it defaults to 1.0.  (Please note that I have no idea what those will produce.  I just made them up as an example.)
+The setting of the alpha is available in both but if you leave it out then it defaults to 1.0.  When specifying a colour with a hexidecimal string the hash sign ('#') is optional. (Please note that I have no idea what those will produce.  I just made them up as an example.)
 
 ## Future
 
