@@ -18,12 +18,12 @@ to the following
 
 Note that because the alpha value in this case was 1.0 it could have been left off because the function has it set to that value by default.
 
-There are also functions that allow you to create UIColor objects using a hexidecimal integer or string.
+There are also functions that allow you to create UIColor objects using a hexadecimal integer or string.
 
 	let backgroundColour = UIColor ( hex: 0x42ac58, alpha: 0.75 )
 	let foregroundColour = UIColor ( hexString: "#0f23ec" )
 	
-The setting of the alpha is available in both but if you leave it out then it defaults to 1.0.  When specifying a colour with a hexidecimal string the hash sign ('#') is optional. (Please note that I have no idea what those will produce.  I just made them up as an example.)
+The setting of the alpha is available in both but if you leave it out then it defaults to 1.0.  When specifying a colour with a hexadecimal string the hash sign ('#') is optional. (Please note that I have no idea what those will produce.  I just made them up as an example.)
 
 An additional function allows you to create colors using RGB values but without specifying a value for the opacity (alpha).  In this case it will default to 1.0.
 
