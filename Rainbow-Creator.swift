@@ -1,6 +1,6 @@
 //
-//  UIColor+Creator.swift
-//  Rainbow Creator UIColor Extension
+//  Rainbow-Creator.swift
+//  Rainbow Creator UIColor & NSColor Extension
 //
 //  Created by Reid Gravelle on 2015-03-18.
 //  Copyright (c) 2015 Northern Realities Inc. All rights reserved.
@@ -24,10 +24,18 @@
 // THE SOFTWARE.
 //
 
+import Foundation
+
+#if os(iOS)
 import UIKit
+public typealias Color = UIColor
+#else
+import AppKit
+public typealias Color = NSColor
+#endif
 
 
-extension UIColor {
+extension Color {
     /**
     Returns a color object representing the color with the given RGB component values and has the specified opacity.
     
@@ -36,7 +44,7 @@ extension UIColor {
     :param: blueValue The blue component of the color object, specified as a value between 0 and 255.
     :param: alphaValue A CGFloat between 0.0 and 1.0 representing the opacity with a default value of 1.0.
     
-    :returns: The UIColor object
+    :returns: The color object
     */
 
     convenience init ( redValue: Int, greenValue: Int, blueValue: Int, alphaValue: CGFloat = 1.0 ) {
@@ -55,7 +63,7 @@ extension UIColor {
     :param: hex The red, green, and blue components that compromise the color combined into a single hexidecimal number.  Each component has two digits which range from 0 through to f.
     :param: alphaValue A CGFloat between 0.0 and 1.0 representing the opacity with a default value of 1.0.
     
-    :returns: The UIColor object
+    :returns: The color object
     */
     
     convenience init ( hex : Int, alpha : CGFloat = 1.0 ) {
@@ -74,7 +82,7 @@ extension UIColor {
     :param: hex The red, green, and blue components that compromise the color combined into a single hexidecimal string.  Each component has two characters which range from 0 through to f.  The string may be optionally prefixed with a '#' sign.
     :param: alphaValue A CGFloat between 0.0 and 1.0 representing the opacity with a default value of 1.0.
     
-    :returns: The UIColor object
+    :returns: The color object
     */
     
     convenience init ( hexString : String, alpha : CGFloat = 1.0 ) {
