@@ -58,9 +58,9 @@ extension Color {
     
     
     /**
-    Returns a color object representing the color with the given RGB value passed in as a hexidecimal integer and has the specified opacity.
+    Returns a color object representing the color with the given RGB value passed in as a hexadecimal integer and has the specified opacity.
     
-    :param: hex The red, green, and blue components that compromise the color combined into a single hexidecimal number.  Each component has two digits which range from 0 through to f.
+    :param: hex The red, green, and blue components that compromise the color combined into a single hexadecimal number.  Each component has two digits which range from 0 through to f.
     :param: alphaValue A CGFloat between 0.0 and 1.0 representing the opacity with a default value of 1.0.
     
     :returns: The color object
@@ -77,9 +77,9 @@ extension Color {
     
     
     /**
-    Returns a color object representing the color with the given RGB value passed in as a hexidecimal integer and has the specified opacity.
+    Returns a color object representing the color with the given RGB value passed in as a hexadecimal integer and has the specified opacity.
     
-    :param: hex The red, green, and blue components that compromise the color combined into a single hexidecimal string.  Each component has two characters which range from 0 through to f.  The string may be optionally prefixed with a '#' sign.
+    :param: hex The red, green, and blue components that compromise the color combined into a single hexadecimal string.  Each component has two characters which range from 0 through to f.  The string may be optionally prefixed with a '#' sign.
     :param: alphaValue A CGFloat between 0.0 and 1.0 representing the opacity with a default value of 1.0.
     
     :returns: The color object
