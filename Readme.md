@@ -1,7 +1,8 @@
-# Rainbow Creator UIColor Extension
+# Rainbow Creator 
 
-The Rainbow Creator UIColor extension provides developers with easier methods to create custom colours.  Apple provides a limited number of pre-defined colours such as UIColor.blackColor() and UIColor.greenColor().  The Rainbow UIColor library adds over 1500 more colours but not even that may have the exact colour that you require.  
+The Rainbow Creator provides developers with easier methods to create custom colours.  Apple provides a limited number of pre-defined colours such as UIColor.blackColor() and UIColor.greenColor().  The [Rainbow UIColor library](https://github.com/NorthernRealities/Rainbow) adds over 1500 more colours but not even that may have the exact colour that you require.  
 
+As of April 23, 2015 the library supports both NSColor and UIColor.  If the OS is detected then the library creates the extension as UIColor otherwise the extension is created as one of NSColor.  All of the examples below show UIColor but you can just substitute NSColor.
 
 ## Usage
 
@@ -23,6 +24,11 @@ There are also functions that allow you to create UIColor objects using a hexide
 	let foregroundColour = UIColor ( hexString: "#0f23ec" )
 	
 The setting of the alpha is available in both but if you leave it out then it defaults to 1.0.  When specifying a colour with a hexidecimal string the hash sign ('#') is optional. (Please note that I have no idea what those will produce.  I just made them up as an example.)
+
+An additional function allows you to create colors using RGB values but without specifying a value for the opacity (alpha).  In this case it will default to 1.0.
+
+	let newColour = UIColor ( red: 0.8, green: 0.4, blue: 0.75 )
+
 
 ## Future
 

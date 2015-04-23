@@ -58,6 +58,22 @@ extension Color {
     
     
     /**
+    Returns a color object representing the color with the given RGB component values with an opacity (alpha) of 1.0.  Values below 0 will be treated as 0 and values above 1 will be treated as 1.
+    
+    :param: red   The red component of the color, specified between 0 and 1.
+    :param: green The green component of the color, specified between 0 and 1.
+    :param: blue  The blue component of the color, specified between 0 and 1.
+    
+    :returns: The color object.
+    */
+    
+    convenience init ( red: CGFloat, green: CGFloat, blue: CGFloat ) {
+        
+        self.init ( red: red, green: green, blue: blue, alpha: 1.0 )
+    }
+
+    
+    /**
     Returns a color object representing the color with the given RGB value passed in as a hexadecimal integer and has the specified opacity.
     
     :param: hex The red, green, and blue components that compromise the color combined into a single hexadecimal number.  Each component has two digits which range from 0 through to f.
