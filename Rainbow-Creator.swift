@@ -39,12 +39,12 @@ extension Color {
     /**
     Returns a color object representing the color with the given RGB component values and has the specified opacity.
     
-    :param: redValue The red component of the color object, specified as a value between 0 and 255.
-    :param: greenValue The green component of the color object, specified as a value between 0 and 255.
-    :param: blueValue The blue component of the color object, specified as a value between 0 and 255.
-    :param: alphaValue A CGFloat between 0.0 and 1.0 representing the opacity with a default value of 1.0.
+    - parameter redValue: The red component of the color object, specified as a value between 0 and 255.
+    - parameter greenValue: The green component of the color object, specified as a value between 0 and 255.
+    - parameter blueValue: The blue component of the color object, specified as a value between 0 and 255.
+    - parameter alphaValue: A CGFloat between 0.0 and 1.0 representing the opacity with a default value of 1.0.
     
-    :returns: The color object
+    - returns: The color object
     */
 
     convenience init ( redValue: Int, greenValue: Int, blueValue: Int, alphaValue: CGFloat = 1.0 ) {
@@ -60,11 +60,11 @@ extension Color {
     /**
     Returns a color object representing the color with the given RGB component values with an opacity (alpha) of 1.0.  Values below 0 will be treated as 0 and values above 1 will be treated as 1.
     
-    :param: red   The red component of the color, specified between 0 and 1.
-    :param: green The green component of the color, specified between 0 and 1.
-    :param: blue  The blue component of the color, specified between 0 and 1.
+    - parameter red:   The red component of the color, specified between 0 and 1.
+    - parameter green: The green component of the color, specified between 0 and 1.
+    - parameter blue:  The blue component of the color, specified between 0 and 1.
     
-    :returns: The color object.
+    - returns: The color object.
     */
     
     convenience init ( red: CGFloat, green: CGFloat, blue: CGFloat ) {
@@ -76,10 +76,10 @@ extension Color {
     /**
     Returns a color object representing the color with the given RGB value passed in as a hexadecimal integer and has the specified opacity.
     
-    :param: hex The red, green, and blue components that compromise the color combined into a single hexadecimal number.  Each component has two digits which range from 0 through to f.
-    :param: alphaValue A CGFloat between 0.0 and 1.0 representing the opacity with a default value of 1.0.
+    - parameter hex: The red, green, and blue components that compromise the color combined into a single hexadecimal number.  Each component has two digits which range from 0 through to f.
+    - parameter alphaValue: A CGFloat between 0.0 and 1.0 representing the opacity with a default value of 1.0.
     
-    :returns: The color object
+    - returns: The color object
     */
     
     convenience init ( hex : Int, alpha : CGFloat = 1.0 ) {
@@ -95,19 +95,17 @@ extension Color {
     /**
     Returns a color object representing the color with the given RGB value passed in as a hexadecimal integer and has the specified opacity.
     
-    :param: hex The red, green, and blue components that compromise the color combined into a single hexadecimal string.  Each component has two characters which range from 0 through to f.  The string may be optionally prefixed with a '#' sign.
-    :param: alphaValue A CGFloat between 0.0 and 1.0 representing the opacity with a default value of 1.0.
+    - parameter hex: The red, green, and blue components that compromise the color combined into a single hexadecimal string.  Each component has two characters which range from 0 through to f.  The string may be optionally prefixed with a '#' sign.
+    - parameter alphaValue: A CGFloat between 0.0 and 1.0 representing the opacity with a default value of 1.0.
     
-    :returns: The color object
+    - returns: The color object
     */
     
     convenience init ( hexString : String, alpha : CGFloat = 1.0 ) {
         
-        var error : NSError?
-        
         var hexIntValue : UInt32 = 0x000000
         
-        let stringSize = count( hexString )
+        let stringSize = hexString.characters.count
         
         
         if ( ( stringSize == 6 ) || ( stringSize == 7 ) ) {
@@ -115,23 +113,43 @@ extension Color {
             let range = NSMakeRange( 0, stringSize )
             let pattern = "#?[0-9A-F]{6}"
             
-            if let regex = NSRegularExpression ( pattern: pattern, options: .CaseInsensitive, error: &error ) {
+            do {
+                let regex = try NSRegularExpression ( pattern: pattern, options: .CaseInsensitive)
                 let matchRange = regex.rangeOfFirstMatchInString( hexString, options: .ReportProgress, range: range )
                 
                 if matchRange.location != NSNotFound {
                     var workingString = hexString
                     
                     if ( stringSize == 7 ) {
-                        workingString = workingString.substringFromIndex( advance( workingString.startIndex, 1 ) )
+                        workingString = workingString.substringFromIndex( workingString.startIndex.advancedBy(1 ) )
                     }
                     
                     NSScanner ( string: workingString ).scanHexInt ( &hexIntValue )
                 }
+            } catch let error as NSError {
+                print ( "Error creating regular expression to check validity of hex string \"\(hexString)\" - \(error.localizedDescription)" )
             }
         }
         
         
         self.init ( hex: Int( hexIntValue ), alpha: alpha )
+    }
+    
+    
+    /**
+    Returns a color object representing the color with the given HSB component values and has the specified opacity.  No error checking is performed to ensure that numbers are within the expected bounds.  If a number is below the expected value it is treated as the expected value.  The same applies for the upper bound.
+    
+    - parameter hueDegrees: The hue component of the color object, specified as the number of degrees between 0 and 359.
+    - parameter saturationPercent: The saturation component of the color object, specified as a percentage value between 0 and 100.
+    - parameter brightnessPercent: The brightness component of the color object, specified as a percentage value between 0 and 100.
+    - parameter alphaValue: A CGFloat between 0.0 and 1.0 representing the opacity with a default value of 1.0.
+    
+    - returns: The color object
+    */
+
+    convenience init ( hueDegrees: Int, saturationPercent: Int, brightnessPercent: Int, alpha: CGFloat = 1.0 ) {
+        
+        self.init ( hue: CGFloat ( hueDegrees / 360 ), saturation: CGFloat ( saturationPercent / 100 ), brightness: CGFloat ( brightnessPercent / 100 ), alpha: alpha )
     }
 }
 
