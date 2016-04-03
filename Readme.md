@@ -23,11 +23,15 @@ There are also functions that allow you to create UIColor objects using a hexade
 	let backgroundColour = UIColor ( hex: 0x42ac58, alpha: 0.75 )
 	let foregroundColour = UIColor ( hexString: "#0f23ec" )
 	
-The setting of the alpha is available in both but if you leave it out then it defaults to 1.0.  When specifying a colour with a hexadecimal string the hash sign ('#') is optional. (Please note that I have no idea what those will produce.  I just made them up as an example.)
+The setting of the alpha is available in both but if you leave it out then it defaults to 1.0.  When specifying a colour with a hexadecimal string the hash sign ('#') is optional. (Please note that I have no idea what those values for colors will produce.  I just made them up as an example.)
 
 An additional function allows you to create colors using RGB values but without specifying a value for the opacity (alpha).  In this case it will default to 1.0.
 
 	let newColour = UIColor ( red: 0.8, green: 0.4, blue: 0.75 )
+
+New in April 2016 is a function that lets you create colors by specifying HSB values. As usual with you can leave off the alpha and it will default to a value of 1.0.
+
+	let newColour = UIColor ( hueDegrees: 359, saturationPercent: 100, brightnessPercent: 100, alpha: 0.8 )
 
 
 ## Future
